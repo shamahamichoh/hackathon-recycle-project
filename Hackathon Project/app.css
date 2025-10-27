@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+/* === Page layout === */
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Main app card === */
+.app-root {
+  width: min(1000px, 95%);
+  margin: 32px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  padding: 3rem 2.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-root:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 30px 55px -15px rgba(0, 0, 0, 0.18);
+}
+
+/* === Title & instruction === */
+.heading {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.instruction {
+  text-align: center;
+  font-size: 16px;
+  color: #6b7280;
+  margin-top: -12px;
+}
+
+/* === Item container === */
+.current-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12rem;
+  margin-bottom: 1.5rem;
+}
+
+/* === Item card === */
+.item-card {
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 28px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.item-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.item-icon {
+  font-size: 4rem;
+  color: #2563eb; /* vibrant blue */
+}
+
+/* === Bins layout === */
+.bins-container {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  flex-wrap: wrap; /* responsive stacking */
+}
+
+/* === Bins base style === */
+.drop-zone {
+  flex: 1 1 45%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: default;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+/* Recycling Bin */
+.recycle-box {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  box-shadow: 0 8px 18px rgba(59, 130, 246, 0.4);
+}
+
+/* Trash Bin */
+.waste-box {
+  background: linear-gradient(135deg, #4b5563 0%, #1f2937 100%);
+  box-shadow: 0 8px 18px rgba(75, 85, 99, 0.4);
+}
+
+/* Content inside bins */
+.bin-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bin-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+/* === Drag over effect === */
+.drag-over {
+  outline: 5px dashed rgba(255, 255, 255, 0.95);
+  transform: scale(1.04);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* === Feedback text === */
+.feedback {
+  min-height: 28px;
+  font-weight: 700;
+  color: #065f46;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* === Responsive tweaks === */
+@media (max-width: 700px) {
+  .bins-container {
+    flex-direction: column;
+  }
+
+  .drop-zone {
+    height: 140px;
+  }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduce, Reuse, Recycle Sorter</title>
+    <!-- Load Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <link rel="stylesheet" href="app.css"> <!-- This line links your CSS file -->
+    <head>
+    <style>
+    </style>
+</head>
+<body>
+     <div class="app-root">
+        <!-- Main Title and Scoreboard -->
+        <div class="heading">
+            <h1 class="text-3xl font-bold">Plastic Sorter Game</h1>
+        </div>
+        
+        <!-- Score and Round Tracker -->
+        <div class="flex justify-between w-full items-center mb-6 px-2">
+             <p class="text-lg font-semibold text-left text-gray-600" id="roundDisplay">Item 1 of 10</p>
+             <p class="text-xl font-bold text-right text-indigo-600" id="scoreDisplay">Score: 0</p>
+        </div>
+        
+        <p id="feedback" class="feedback">Drag the item to the correct bin.</p>
+
+        <!-- Current Item Display Area -->
+        <div id="currentItemContainer" class="current-item">
+            <!-- Draggable Item is loaded here by JavaScript -->
+        </div>
+
+        <!-- Drop Zones (Bins) -->
+        <div class="bins-container">
+
+            <!-- 1. Recycling Bin (Uses .recycle-box) -->
+            <div id="recycle" data-type="recycle" 
+                 class="drop-zone recycle-box shadow-lg">
+                 <div class="bin-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 2 12 12 20 12"/><path d="M20 12H4a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h8"/><path d="M20 12a8 8 0 1 0 0 8"/></svg>
+                    <span class="text-xl font-bold">Recycling Bin</span>
+                 </div>
+            </div>
+
+            <!-- 2. Landfill/Trash Bin (Uses .waste-box) -->
+            <div id="landfill" data-type="landfill" 
+                 class="drop-zone waste-box shadow-lg">
+                 <div class="bin-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bin-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M15 2h-6"/><path d="M15 2h-6v2h6z"/></svg>
+                    <span class="text-xl font-bold">Landfill / Trash</span>
+                 </div>
+            </div>
+
+        </div>
+    </div>
+
+<div style="position: fixed; top: 20px; right: 20px; background: white; border-radius: 15px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 300px; z-index: 1000;">
+    <div style="font-size: 1.3em; color: #333; margin-bottom: 20px; text-align: center; border-bottom: 3px solid #4CAF50; padding-bottom: 10px;">🏆 Live Leaderboard</div>
+    <div id="leaderboardContent">
+        <div style="display: grid; grid-template-columns: 30px 1fr 60px; gap: 10px; padding: 10px; margin: 8px 0; border-radius: 8px; background: linear-gradient(135deg, #FFD700, #FFEC8B); align-items: center;">
+            <div style="font-weight: bold; text-align: center;">#1</div>
+            <div style="font-weight: 500; color: #333;">EcoMaster_Taro</div>
+            <div style="text-align: right; font-weight: bold; color: #4CAF50;">15842</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 30px 1fr 60px; gap: 10px; padding: 10px; margin: 8px 0; border-radius: 8px; background: linear-gradient(135deg, #C0C0C0, #E8E8E8); align-items: center;">
+            <div style="font-weight: bold; text-align: center;">#2</div>
+            <div style="font-weight: 500; color: #333;">GreenWarrior_Hana</div>
+            <div style="text-align: right; font-weight: bold; color: #4CAF50;">14927</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 30px 1fr 60px; gap: 10px; padding: 10px; margin: 8px 0; border-radius: 8px; background: linear-gradient(135deg, #CD7F32, #E8B886); align-items: center;">
+            <div style="font-weight: bold; text-align: center;">#3</div>
+            <div style="font-weight: 500; color: #333;">TokyoRecycler</div>
+            <div style="text-align: right; font-weight: bold; color: #4CAF50;">13458</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 30px 1fr 60px; gap: 10px; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa; align-items: center;">
+            <div style="font-weight: bold; text-align: center;">#4</div>
+            <div style="font-weight: 500; color: #333;">PlasticHunter</div>
+            <div style="text-align: right; font-weight: bold; color: #4CAF50;">12893</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 30px 1fr 60px; gap: 10px; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa; border: 2px solid #4CAF50; align-items: center;">
+            <div style="font-weight: bold; text-align: center;">#5</div>
+            <div style="font-weight: 500; color: #333;">Player (You!)</div>
+            <div style="text-align: right; font-weight: bold; color: #4CAF50;">0</div>
+        </div>
+    </div>
+</div>
+<!-- >>>>>>>>>> END OF LEADERBOARD - DON'T CHANGE ANYTHING BELOW <<<<<<<<<< -->
+
+    <script src="app.js"></script>
+</body>
